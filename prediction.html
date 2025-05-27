@@ -8,25 +8,23 @@
 </head>
 <body>
     <div class="password-gate">
-        <div class="gate-container">
+        <div class="gate-card">
             <h2>Prediction Tool Access</h2>
-            <p>Enter the current prediction password to proceed</p>
+            <p>Enter the prediction tool password to continue</p>
             
             <form id="passwordForm">
                 <div class="input-group">
-                    <input type="password" id="toolPassword" placeholder="Enter prediction password" required>
-                    <button type="submit" class="unlock-btn">🔓</button>
+                    <input type="password" id="toolPassword" placeholder="Enter password" required>
+                    <button type="submit">UNLOCK TOOL</button>
                 </div>
             </form>
             
             <div class="password-hint">
-                <p>Password changes periodically. Contact administrator if you don't have the current password.</p>
+                <p>Password is case sensitive. Contact admin if you forgot it.</p>
             </div>
-            
-            <div class="error-message" id="errorMessage"></div>
         </div>
     </div>
     
-    <script src="js/main.js"></script>
+    <script src="js/prediction.js"></script>
 </body>
 </html>
