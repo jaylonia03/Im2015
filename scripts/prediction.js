@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultValue = document.getElementById('resultValue');
     const resultType = document.getElementById('resultType');
     const typeBadge = document.getElementById('typeBadge');
-    const calculationSteps = document.getElementById('calculationSteps');
-    const stepsText = document.getElementById('stepsText');
-
+    
     // Check if password is already verified in this session
     const passwordVerified = sessionStorage.getItem('passwordVerified') === 'true';
 
@@ -82,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Show calculation steps
-        stepsText.textContent = calculation.steps;
+        
         
         // Show result container
         resultContainer.style.display = 'block';
