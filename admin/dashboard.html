@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | IM2015</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h2>IM2015</h2>
+                <p>Administration</p>
+            </div>
+            
+            <nav class="admin-menu">
+                <a href="#" class="active" data-section="dashboard">Dashboard</a>
+                <a href="#" data-section="password">Password Settings</a>
+                <a href="#" data-section="access">Access Logs</a>
+                <a href="#" data-section="system">System Tools</a>
+            </nav>
+            
+            <div class="admin-status">
+                <div class="status-indicator online"></div>
+                <span>Admin Online</span>
+            </div>
+            
+            <button id="logoutBtn" class="logout-btn">Log Out</button>
+        </aside>
+        
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1>Administrator Dashboard</h1>
+                <div class="admin-actions">
+                    <span id="currentTime"></span>
+                </div>
+            </header>
+            
+            <div class="dashboard-section" id="dashboardSection">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Tool Usage</h3>
+                        <div class="stat-value" id="usageCount">0</div>
+                        <p>predictions today</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Current Password</h3>
+                        <div class="stat-value" id="currentPassword">******</div>
+                        <p>active until changed</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>System Status</h3>
+                        <div class="stat-value online">Active</div>
+                        <p>all systems normal</p>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button id="changePasswordBtn" class="action-btn">Change Prediction Password</button>
+                        <button id="viewHistoryBtn" class="action-btn">View Calculation History</button>
+                        <button id="systemCheckBtn" class="action-btn">Run System Diagnostics</button>
+                        <button id="clearDataBtn" class="action-btn">Clear All User Data</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-section hidden" id="passwordSection">
+                <h2>Password Management</h2>
+                
+                <div class="password-form">
+                    <div class="form-group">
+                        <label for="newPassword">New Prediction Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                    </div>
+                    
+                    <button id="updatePasswordBtn" class="save-btn">Update Password</button>
+                    
+                    <div class="password-rules">
+                        <h4>Password Requirements:</h4>
+                        <ul>
+                            <li>Minimum 6 characters</li>
+                            <li>No spaces</li>
+                            <li>Should not be easily guessable</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="password-history">
+                    <h3>Recent Password Changes</h3>
+                    <table id="passwordHistory">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Changed By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="dashboard-section hidden" id="accessSection">
+                <h2>Access Logs</h2>
+                <div class="logs-container">
+                    <div class="logs-table">
+                        <table id="accessLogs">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>IP Address</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Filled by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="logs-actions">
+                        <button id="refreshLogs" class="refresh-btn">Refresh Logs</button>
+                        <button id="exportLogs" class="export-btn">Export as CSV</button>
+                        <button id="clearLogs" class="clear-btn">Clear All Logs</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-section hidden" id="systemSection">
+                <h2>System Tools</h2>
+                
+                <div class="system-tools-grid">
+                    <div class="tool-card">
+                        <h3>Backup Configuration</h3>
+                        <p>Create a backup of current system settings</p>
+                        <button class="tool-btn">Create Backup</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3>Reset System</h3>
+                        <p>Reset all settings to default</p>
+                        <button class="tool-btn warning">Factory Reset</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3>Diagnostics</h3>
+                        <p>Run comprehensive system check</p>
+                        <button class="tool-btn">Run Diagnostics</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3>Update System</h3>
+                        <p>Check for system updates</p>
+                        <button class="tool-btn">Check Updates</button>
+                    </div>
+                </div>
+                
+                <div class="system-info">
+                    <h3>System Information</h3>
+                    <div class="info-grid">
+                        <div>
+                            <span>Version:</span>
+                            <span id="systemVersion">1.0.0</span>
+                        </div>
+                        <div>
+                            <span>Last Updated:</span>
+                            <span id="lastUpdated">2023-11-15</span>
+                        </div>
+                        <div>
+                            <span>Memory Usage:</span>
+                            <span id="memoryUsage">--</span>
+                        </div>
+                        <div>
+                            <span>Uptime:</span>
+                            <span id="systemUptime">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="../js/admin.js"></script>
+</body>
+</html>
