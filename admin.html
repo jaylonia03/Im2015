@@ -6,98 +6,387 @@
     <title>Admin Panel | IM2015 Premium</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/admin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="admin-body">
     <div class="admin-container">
         <div class="login-panel" id="loginPanel">
             <div class="login-box">
-                <h1><i class="fas fa-lock"></i> Admin Login</h1>
-                <div class="input-group">
-                    <label for="adminUsername">Username</label>
-                    <input type="text" id="adminUsername" placeholder="Enter admin username">
+                <div class="login-header">
+                    <div class="admin-logo">
+                        <i class="fas fa-user-shield"></i>
+                        <span>IM2015 <span>Admin</span></span>
+                    </div>
+                    <h2>Secure Admin Portal</h2>
                 </div>
-                <div class="input-group">
-                    <label for="adminPassword">Password</label>
-                    <input type="password" id="adminPassword" placeholder="Enter password">
+                <div class="login-body">
+                    <div class="input-group">
+                        <label for="adminUsername">Admin Username</label>
+                        <input type="text" id="adminUsername" placeholder="Enter admin username">
+                    </div>
+                    <div class="input-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter password">
+                    </div>
+                    <p class="error-message" id="adminLoginError"></p>
                 </div>
-                <button id="adminLoginBtn">Login</button>
-                <p class="error-message" id="adminLoginError"></p>
-                <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+                <div class="login-footer">
+                    <button id="adminLoginBtn">LOGIN <i class="fas fa-sign-in-alt"></i></button>
+                </div>
             </div>
         </div>
 
-        <div class="admin-content" id="adminContent" style="display: none;">
-            <header>
-                <h1><a href="index.html">IM2015 <span>Admin Panel</span></a></h1>
-                <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
-            </header>
-
-            <div class="admin-tools">
-                <div class="tool-card">
-                    <h2><i class="fas fa-key"></i> Prediction Tool Password</h2>
-                    <div class="tool-content">
-                        <p>Current password: <span id="currentToolPassword"></span></p>
-                        <div class="input-group">
-                            <label for="newToolPassword">New Password</label>
-                            <input type="password" id="newToolPassword" placeholder="Enter new password">
+        <div class="admin-content" id="adminContent">
+            <aside class="admin-sidebar">
+                <div class="sidebar-header">
+                    <div class="admin-profile">
+                        <div class="profile-icon">
+                            <i class="fas fa-user-cog"></i>
                         </div>
-                        <div class="input-group">
-                            <label for="confirmToolPassword">Confirm Password</label>
-                            <input type="password" id="confirmToolPassword" placeholder="Confirm new password">
+                        <div class="profile-info">
+                            <div class="profile-name">Administrator</div>
+                            <div class="profile-role">Super Admin</div>
                         </div>
-                        <button id="updatePasswordBtn">Update Password</button>
-                        <p class="success-message" id="passwordUpdateSuccess"></p>
-                        <p class="error-message" id="passwordUpdateError"></p>
                     </div>
                 </div>
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="active" data-tab="dashboard">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </li>
+                        <li data-tab="password">
+                            <i class="fas fa-key"></i> Password Settings
+                        </li>
+                        <li data-tab="statistics">
+                            <i class="fas fa-chart-pie"></i> Statistics
+                        </li>
+                        <li data-tab="settings">
+                            <i class="fas fa-cog"></i> System Settings
+                        </li>
+                        <li data-tab="logs">
+                            <i class="fas fa-clipboard-list"></i> Activity Logs
+                        </li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <button id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </aside>
 
-                <div class="tool-card">
-                    <h2><i class="fas fa-chart-bar"></i> Usage Statistics</h2>
-                    <div class="tool-content">
-                        <div class="stat-item">
-                            <i class="fas fa-calculator"></i>
-                            <div>
-                                <h3>Total Calculations</h3>
-                                <p id="totalCalculations">0</p>
+            <main class="admin-main">
+                <header class="admin-header">
+                    <h1 id="adminTitle">Admin Dashboard</h1>
+                    <div class="header-actions">
+                        <div class="notification-bell">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="quick-btn">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="admin-tab-content" id="dashboardTab">
+                    <div class="welcome-card">
+                        <h2>Welcome, Administrator</h2>
+                        <p>You have full control over the IM2015 Premium Prediction Tool system.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="totalCalculations">0</div>
+                                <div class="stat-label">Total Calculations</div>
                             </div>
                         </div>
-                        <div class="stat-item">
-                            <i class="fas fa-history"></i>
-                            <div>
-                                <h3>Last Calculation</h3>
-                                <p id="lastCalculation">Never</p>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="uniqueVisitors">0</div>
+                                <div class="stat-label">Unique Visitors</div>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="lastCalculation">Never</div>
+                                <div class="stat-label">Last Calculation</div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="tool-card">
-                    <h2><i class="fas fa-cog"></i> System Settings</h2>
-                    <div class="tool-content">
-                        <div class="setting-item">
-                            <label class="switch">
-                                <input type="checkbox" id="maintenanceMode">
-                                <span class="slider round"></span>
-                            </label>
-                            <span>Maintenance Mode</span>
+                    <div class="quick-settings-card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions-grid">
+                            <button class="quick-action-btn">
+                                <i class="fas fa-key"></i> Change Password
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-trash"></i> Clear Logs
+                            </button>
+                            <button class="quick-action-btn">
+                                <i class="fas fa-power-off"></i> Maintenance
+                            </button>
                         </div>
-                        <div class="setting-item">
-                            <label class="switch">
-                                <input type="checkbox" id="darkModeToggle" checked>
-                                <span class="slider round"></span>
-                            </label>
-                            <span>Dark Mode</span>
-                        </div>
-                        <button id="saveSettingsBtn">Save Settings</button>
                     </div>
                 </div>
-            </div>
 
-            <footer>
-                <p>© 2023 IM2015 Premium Prediction Tool. Admin Panel v1.0</p>
-            </footer>
+                <div class="admin-tab-content" id="passwordTab" style="display: none;">
+                    <div class="settings-card">
+                        <h2>Password Management</h2>
+                        <p>Manage the prediction tool access password below:</p>
+
+                        <div class="current-password">
+                            <label>Current Password:</label>
+                            <div class="password-display">
+                                <span id="currentToolPassword">••••••••</span>
+                                <button id="revealPasswordBtn">
+                                    <i class="fas fa-eye"></i> Reveal
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="password-form">
+                            <div class="input-group">
+                                <label for="newToolPassword">New Password</label>
+                                <input type="password" id="newToolPassword" placeholder="Enter new password">
+                                <div class="password-strength" id="passwordStrength">
+                                    <div class="strength-bar"></div>
+                                    <div class="strength-text">Weak</div>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="confirmToolPassword">Confirm Password</label>
+                                <input type="password" id="confirmToolPassword" placeholder="Confirm new password">
+                            </div>
+                            <button id="updatePasswordBtn" class="save-btn">
+                                <i class="fas fa-save"></i> Update Password
+                            </button>
+                            <p class="success-message" id="passwordUpdateSuccess"></p>
+                            <p class="error-message" id="passwordUpdateError"></p>
+                        </div>
+                    </div>
+
+                    <div class="password-policy">
+                        <h3>Password Policy</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Minimum 8 characters</li>
+                            <li><i class="fas fa-check-circle"></i> At least 1 number</li>
+                            <li><i class="fas fa-check-circle"></i> Not previously used</li>
+                            <li><i class="fas fa-check-circle"></i> Changed every 90 days</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="admin-tab-content" id="statisticsTab" style="display: none;">
+                    <div class="stats-header">
+                        <h2>Usage Statistics</h2>
+                        <div class="stats-period">
+                            <select id="statsPeriod">
+                                <option value="7">Last 7 days</option>
+                                <option value="30">Last 30 days</option>
+                                <option value="90">Last 90 days</option>
+                                <option value="365">Last year</option>
+                                <option value="all">All time</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="charts-container">
+                        <div class="chart-card">
+                            <h3>Calculations Over Time</h3>
+                            <div class="chart-placeholder" id="calculationsChart">
+                                <div class="no-data">
+                                    <i class="fas fa-chart-line"></i>
+                                    <p>Data visualization will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Result Distribution</h3>
+                            <div class="chart-placeholder" id="resultsChart">
+                                <div class="no-data">
+                                    <i class="fas fa-chart-pie"></i>
+                                    <p>Data visualization will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-table">
+                        <h3>Recent Activity</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Activity</th>
+                                    <th>IP Address</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable">
+                                <tr>
+                                    <td colspan="4" class="no-data">No activity records found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="admin-tab-content" id="settingsTab" style="display: none;">
+                    <div class="settings-card">
+                        <h2>System Configuration</h2>
+                        
+                        <div class="settings-group">
+                            <h3>Access Control</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Maintenance Mode</h4>
+                                    <p>Temporarily disable public access to the prediction tool</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="maintenanceMode">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Password Protection</h4>
+                                    <p>Require password to access the prediction tool</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="passwordProtection" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Appearance</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Dark Mode</h4>
+                                    <p>Enable dark color scheme for the application</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="darkModeToggle" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Theme Color</h4>
+                                    <p>Primary color for the interface</p>
+                                </div>
+                                <div class="color-picker">
+                                    <input type="color" id="themeColor" value="#6c5ce7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Notifications</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Alerts</h4>
+                                    <p>Receive email notifications for admin activities</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="emailAlerts">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Admin Email</h4>
+                                    <p>Email address for notifications</p>
+                                </div>
+                                <input type="email" id="adminEmail" placeholder="admin@example.com">
+                            </div>
+                        </div>
+
+                        <button id="saveSettingsBtn" class="save-btn">
+                            <i class="fas fa-save"></i> Save All Settings
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-tab-content" id="logsTab" style="display: none;">
+                    <div class="logs-header">
+                        <h2>Activity Logs</h2>
+                        <div class="logs-actions">
+                            <button id="refreshLogsBtn">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <button id="exportLogsBtn">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                            <button id="clearLogsBtn">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="logs-filter">
+                        <div class="filter-group">
+                            <label for="logType">Log Type:</label>
+                            <select id="logType">
+                                <option value="all">All Activities</option>
+                                <option value="calculation">Calculations</option>
+                                <option value="login">Login Attempts</option>
+                                <option value="system">System Events</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="logDate">Date Range:</label>
+                            <input type="date" id="logDateFrom">
+                            <span>to</span>
+                            <input type="date" id="logDateTo">
+                        </div>
+                    </div>
+
+                    <div class="logs-table-container">
+                        <table class="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Event</th>
+                                    <th>Details</th>
+                                    <th>IP Address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logsTable">
+                                <tr>
+                                    <td colspan="5" class="no-data">No logs available</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="logs-pagination">
+                        <button disabled><i class="fas fa-chevron-left"></i></button>
+                        <span>Page 1 of 1</span>
+                        <button disabled><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 
