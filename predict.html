@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Prediction Tool | IM2015</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="password-gate">
+        <div class="gate-container">
+            <h2>Prediction Tool Access</h2>
+            <p>Enter the current prediction password to proceed</p>
+            
+            <form id="passwordForm">
+                <div class="input-group">
+                    <input type="password" id="toolPassword" placeholder="Enter prediction password" required>
+                    <button type="submit" class="unlock-btn">🔓</button>
+                </div>
+            </form>
+            
+            <div class="password-hint">
+                <p>Password changes periodically. Contact administrator if you don't have the current password.</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
