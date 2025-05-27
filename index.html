@@ -4,117 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IM2015 Premium Prediction Tool</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="landing-container">
-        <div class="particles" id="particles-js"></div>
+        <header class="animated-header">
+            <h1>IM2015 <span>Premium</span> Prediction Tool</h1>
+            <div class="glowing-circle"></div>
+        </header>
         
-        <nav class="navbar">
-            <div class="logo">
-                <span class="logo-icon">IM</span>
-                <span class="logo-text">2015 <span>Premium</span></span>
-            </div>
-        </nav>
-
-        <header class="hero">
-            <div class="hero-content">
-                <h1><span>Premium</span> Prediction Tool</h1>
-                <p class="tagline">Advanced computational predictions with proprietary algorithms</p>
+        <main class="landing-main">
+            <div class="card animated-card">
+                <h2>Advanced Number Prediction System</h2>
+                <p>Utilizing proprietary algorithms to provide predictive insights with a balanced outcome probability.</p>
                 
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">50%</div>
-                        <div class="stat-label">Accuracy</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">∞</div>
-                        <div class="stat-label">Calculations</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">100%</div>
-                        <div class="stat-label">Confidential</div>
-                    </div>
+                <div class="disclaimer">
+                    <div class="warning-icon">⚠️</div>
+                    <p>This platform is designed for predictive analysis only. Commercial distribution is prohibited. Results reflect a balanced probability outcome.</p>
                 </div>
                 
-                <a href="prediction.html" class="predict-btn pulse">
-                    PREDICT NOW <i class="fas fa-arrow-right"></i>
-                </a>
+                <a href="predict.html" class="predict-btn">PREDICT NOW</a>
             </div>
             
-            <div class="hero-graphic">
-                <div class="circle-animation">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
-            </div>
-        </header>
-
-        <section class="warning-section">
-            <div class="warning-card">
-                <div class="warning-icon">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="warning-content">
-                    <h3>Important Notice</h3>
-                    <p>This platform is designed exclusively for predictive analysis purposes. The tool is not available for commercial sale or distribution. While our proprietary algorithm maintains an approximate 50% accuracy rate, we emphasize that results should be interpreted with discretion and used responsibly.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-section">
-            <h2>Exclusive Features</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Secure Access</h3>
-                    <p>Password-protected prediction tool with encrypted access</p>
+                <div class="feature">
+                    <div class="feature-icon">🔮</div>
+                    <h3>Proprietary Algorithm</h3>
+                    <p>Unique calculation method protected by confidentiality</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Advanced Algorithm</h3>
-                    <p>Proprietary calculation formula for optimal results</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
                     <h3>Instant Results</h3>
-                    <p>Immediate computation with clear odd/even determination</p>
+                    <p>Get predictions in real-time</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Access</h3>
+                    <p>Password-protected prediction tool</p>
                 </div>
             </div>
-        </section>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span>IM2015</span> Premium Prediction Tool
-                </div>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Terms of Use</a>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                </div>
-                <div class="footer-copyright">
-                    © 2023 IM2015 Premium. All rights reserved.
-                </div>
-            </div>
+        </main>
+        
+        <footer>
+            <p>© 2023 IM2015 Premium Prediction Tool. All rights reserved.</p>
+            <p class="admin-note">Administrative access restricted to authorized personnel only.</p>
         </footer>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="scripts/main.js"></script>
-    <script>
-        // Initialize particles.js
-        particlesJS.load('particles-js', 'assets/particles.json', function() {
-            console.log('Particles.js loaded');
-        });
-    </script>
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
