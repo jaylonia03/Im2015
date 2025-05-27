@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | IM2015</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-login">
+        <div class="login-container">
+            <div class="admin-logo">
+                <h1>IM2015</h1>
+                <span>Administration Panel</span>
+            </div>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter admin username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter admin password" required>
+                </div>
+                
+                <button type="submit" class="login-btn">Access Dashboard</button>
+            </form>
+            
+            <div class="login-error" id="loginError"></div>
+            
+            <div class="security-notice">
+                <p>⚠️ Unauthorized access to this panel is strictly prohibited and may result in legal action.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/admin.js"></script>
+</body>
+</html>
