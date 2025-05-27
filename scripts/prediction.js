@@ -1,26 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Apply theme color
+    applyThemeColor();
+    
+    // Check maintenance mode
+    if (isMaintenanceMode()) {
+        alert('The prediction tool is currently under maintenance. Please try again later.');
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Check password protection
+    const passwordProtected = isPasswordProtected();
+    
     // DOM Elements
-    const passwordPrompt = document.getElementById('passwordPrompt');
-    const predictionContent = document.getElementById('predictionContent');
+    const passwordOverlay = document.getElementById('passwordOverlay');
+    const predictionMain = document.getElementById('predictionMain');
     const toolPasswordInput = document.getElementById('toolPassword');
     const submitPasswordBtn = document.getElementById('submitPassword');
     const passwordError = document.getElementById('passwordError');
     const currentNumberInput = document.getElementById('currentNumber');
     const calculateBtn = document.getElementById('calculateBtn');
-    const resultContainer = document.getElementById('resultContainer');
+    const resultSection = document.getElementById('resultSection');
     const resultValue = document.getElementById('resultValue');
     const resultType = document.getElementById('resultType');
     const typeBadge = document.getElementById('typeBadge');
+    const copyResultBtn = document.getElementById('copyResultBtn');
+    const newCalculationBtn = document.getElementById('newCalculationBtn');
     
     // Check if password is already verified in this session
-    const passwordVerified = sessionStorage.getItem('passwordVerified') === 'true';
+    const passwordVerified = !passwordProtected || sessionStorage.getItem('passwordVerified') === 'true';
 
     if (passwordVerified) {
-        passwordPrompt.style.display = 'none';
-        predictionContent.style.display = 'block';
+        passwordOverlay.style.display = 'none';
+        predictionMain.style.display = 'block';
     } else {
-        passwordPrompt.style.display = 'flex';
-        predictionContent.style.display = 'none';
+        passwordOverlay.style.display = 'flex';
+        predictionMain.style.display = 'none';
     }
 
     // Handle password submission
@@ -31,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (enteredPassword === correctPassword) {
             // Password is correct
             sessionStorage.setItem('passwordVerified', 'true');
-            passwordPrompt.style.display = 'none';
-            predictionContent.style.display = 'block';
+            passwordOverlay.style.display = 'none';
+            predictionMain.style.display = 'block';
         } else {
             // Password is incorrect
             passwordError.textContent = 'Incorrect password. Please try again.';
@@ -69,27 +84,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Display results
         resultValue.textContent = formatNumber(calculation.result);
         typeBadge.textContent = calculation.isEven ? 'EVEN' : 'ODD';
-        
-        // Style based on even/odd
-        if (calculation.isEven) {
-            typeBadge.className = 'type-badge even';
-            document.querySelector('.result-card').style.background = 'linear-gradient(135deg, #00b894, #55efc4)';
-        } else {
-            typeBadge.className = 'type-badge odd';
-            document.querySelector('.result-card').style.background = 'linear-gradient(135deg, #d63031, #e17055)';
-        }
-        
-        // Show calculation steps
-        
+        typeBadge.className = 'type-badge ' + (calculation.isEven ? 'even' : 'odd');
         
         // Show result container
-        resultContainer.style.display = 'block';
+        resultSection.style.display = 'block';
         
         // Update usage statistics
         updateUsageStatistics();
         
         // Scroll to results
-        resultContainer.scrollIntoView({ behavior: 'smooth' });
+        resultSection.scrollIntoView({ behavior: 'smooth' });
     });
 
     // Also allow Enter key to calculate
@@ -98,4 +102,36 @@ document.addEventListener('DOMContentLoaded', function() {
             calculateBtn.click();
         }
     });
+    
+    // Copy result to clipboard
+    copyResultBtn.addEventListener('click', function() {
+        const result = resultValue.textContent;
+        if (result !== '--') {
+            navigator.clipboard.writeText(result)
+                .then(() => {
+                    const originalText = copyResultBtn.innerHTML;
+                    copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        copyResultBtn.innerHTML = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        }
+    });
+    
+    // New calculation button
+    newCalculationBtn.addEventListener('click', function() {
+        currentNumberInput.value = '';
+        resultSection.style.display = 'none';
+        currentNumberInput.focus();
+    });
+    
+    // Focus on input when page loads
+    if (passwordVerified) {
+        currentNumberInput.focus();
+    } else {
+        toolPasswordInput.focus();
+    }
 });
