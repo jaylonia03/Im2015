@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Tool | IM2015 Premium</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/prediction.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="prediction-container">
+        <header>
+            <h1><a href="index.html">IM2015 <span>Premium Prediction Tool</span></a></h1>
+        </header>
+
+        <div class="password-prompt" id="passwordPrompt">
+            <div class="password-box">
+                <h2>Enter Prediction Tool Password</h2>
+                <input type="password" id="toolPassword" placeholder="Enter password">
+                <button id="submitPassword">Submit</button>
+                <p class="error-message" id="passwordError"></p>
+            </div>
+        </div>
+
+        <main class="prediction-content" id="predictionContent" style="display: none;">
+            <div class="warning-banner">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Remember: This is a predictive tool only. Results are not guaranteed. 
+                Use at your own discretion.</p>
+            </div>
+
+            <div class="prediction-form">
+                <h2>Prediction Calculator</h2>
+                <div class="input-group">
+                    <label for="currentNumber">Current Number</label>
+                    <input type="number" id="currentNumber" placeholder="Enter your current number">
+                </div>
+
+                <button id="calculateBtn">Calculate Prediction <i class="fas fa-calculator"></i></button>
+
+                <div class="result-container" id="resultContainer">
+                    <div class="result-card">
+                        <h3>Prediction Result</h3>
+                        <div class="result-value" id="resultValue">--</div>
+                        <div class="result-type" id="resultType">
+                            <span class="type-badge" id="typeBadge">?</span>
+                        </div>
+                    </div>
+
+                    <div class="calculation-steps" id="calculationSteps">
+                        <h4>Calculation Steps:</h4>
+                        <p id="stepsText">Enter a number to see the calculation steps</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2023 IM2015 Premium Prediction Tool. All rights reserved.</p>
+            <p><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+        </footer>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/prediction.js"></script>
+</body>
+</html>
