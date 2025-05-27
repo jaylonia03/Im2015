@@ -6,57 +6,85 @@
     <title>Prediction Tool | IM2015 Premium</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/prediction.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="prediction-container">
-        <header>
-            <h1><a href="index.html">IM2015 <span>Premium Prediction Tool</span></a></h1>
-        </header>
-
-        <div class="password-prompt" id="passwordPrompt">
-            <div class="password-box">
-                <h2>Enter Prediction Tool Password</h2>
-                <input type="password" id="toolPassword" placeholder="Enter password">
-                <button id="submitPassword">Submit</button>
-                <p class="error-message" id="passwordError"></p>
+        <div class="password-overlay" id="passwordOverlay">
+            <div class="password-modal">
+                <div class="password-header">
+                    <i class="fas fa-lock"></i>
+                    <h2>Secure Access Required</h2>
+                </div>
+                <div class="password-body">
+                    <p>Enter the prediction tool password to continue:</p>
+                    <input type="password" id="toolPassword" placeholder="Enter password">
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+                <div class="password-footer">
+                    <button id="submitPassword">UNLOCK TOOL <i class="fas fa-unlock"></i></button>
+                </div>
             </div>
         </div>
 
-        <main class="prediction-content" id="predictionContent" style="display: none;">
-            <div class="warning-banner">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Remember: This is a predictive tool only. Results are not guaranteed. 
-                Use at your own discretion.</p>
+        <nav class="prediction-nav">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <div class="nav-logo">
+                IM2015 <span>Premium</span>
+            </div>
+        </nav>
+
+        <main class="prediction-main" id="predictionMain">
+            <div class="prediction-header">
+                <h1>Premium <span>Prediction Tool</span></h1>
+                <p class="tool-description">Enter your current number to receive the calculated prediction result</p>
             </div>
 
-            <div class="prediction-form">
-                <h2>Prediction Calculator</h2>
-                <div class="input-group">
-                    <label for="currentNumber">Current Number</label>
-                    <input type="number" id="currentNumber" placeholder="Enter your current number">
+            <div class="prediction-card">
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="currentNumber">Current Number</label>
+                        <div class="input-with-icon">
+                            <input type="number" id="currentNumber" placeholder="Enter your number">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                    </div>
+                    <button id="calculateBtn" class="glow-btn">
+                        CALCULATE <i class="fas fa-magic"></i>
+                    </button>
                 </div>
 
-                <button id="calculateBtn">Calculate Prediction <i class="fas fa-calculator"></i></button>
-
-                <div class="result-container" id="resultContainer">
-                    <div class="result-card">
-                        <h3>Prediction Result</h3>
+                <div class="result-section" id="resultSection">
+                    <div class="result-display">
+                        <div class="result-label">Prediction Result</div>
                         <div class="result-value" id="resultValue">--</div>
-                        <div class="result-type" id="resultType">
+                        <div class="result-type">
                             <span class="type-badge" id="typeBadge">?</span>
                         </div>
                     </div>
-
-    
+                    <div class="result-actions">
+                        <button id="copyResultBtn">
+                            <i class="fas fa-copy"></i> Copy Result
+                        </button>
+                        <button id="newCalculationBtn">
+                            <i class="fas fa-redo"></i> New Calculation
+                        </button>
+                    </div>
                 </div>
+            </div>
+
+            <div class="prediction-warning">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Remember: This is a predictive tool only. Results should be used for informational purposes.</p>
             </div>
         </main>
 
-        <footer>
+        <footer class="prediction-footer">
             <p>© 2023 IM2015 Premium Prediction Tool. All rights reserved.</p>
-            <p><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+            <p class="version">Version 2.1.0</p>
         </footer>
     </div>
 
