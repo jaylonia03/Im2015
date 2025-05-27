@@ -3,63 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction Tool | IM2015</title>
+    <title>IM2015 Prediction Tool</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="tool-container">
-        <header>
-            <h1>IM2015 <span>Prediction</span> Engine</h1>
-            <div class="tool-status">
-                <span class="status-indicator active"></span>
-                <span>System Active</span>
+        <header class="tool-header">
+            <h1>IM2015 <span>Prediction Engine</span></h1>
+            <div class="tool-info">
+                <div class="info-icon">i</div>
+                <div class="info-tooltip">
+                    Enter a number to calculate the prediction result. The proprietary algorithm will process your input securely.
+                </div>
             </div>
         </header>
         
-        <main class="prediction-main">
-            <div class="calculation-card">
-                <div class="input-section">
-                    <label for="currentNumber">Current Number</label>
-                    <input type="number" id="currentNumber" placeholder="Enter your number">
-                    <button id="calculateBtn" class="calculate-btn">Calculate Prediction</button>
-                </div>
-                
-                <div class="result-section">
-                    <div class="result-display">
-                        <h3>Prediction Result</h3>
-                        <div class="result-value" id="resultValue">--</div>
-                        <div class="result-type" id="resultType">Enter a number to calculate</div>
-                    </div>
-                    
-                    <div class="result-details">
-                        <div class="detail">
-                            <span>Input Number</span>
-                            <span id="inputNumber">--</span>
-                        </div>
-                        <div class="detail">
-                            <span>Sum of Digits</span>
-                            <span id="sumDigits">--</span>
-                        </div>
-                        <div class="detail">
-                            <span>Calculation</span>
-                            <span id="calculation">--</span>
-                        </div>
-                    </div>
-                </div>
+        <main class="prediction-interface">
+            <div class="input-section">
+                <label for="currentNumber">Current Number</label>
+                <input type="number" id="currentNumber" placeholder="Enter your number">
+                <button id="calculateBtn">CALCULATE</button>
             </div>
             
-            <div class="history-card">
-                <h3>Recent Calculations</h3>
-                <div class="history-list" id="historyList">
-                    <div class="empty-history">No calculations yet</div>
+            <div class="result-section">
+                <div class="result-card">
+                    <h3>Prediction Result</h3>
+                    <div class="result-value" id="resultValue">--</div>
+                    <div class="result-type" id="resultType">Enter a number to calculate</div>
                 </div>
-                <button id="clearHistory" class="clear-btn">Clear History</button>
+                
+                <div class="analysis">
+                    <h4>Result Analysis</h4>
+                    <p id="analysisText">The prediction algorithm will analyze your input and provide a comprehensive result.</p>
+                </div>
             </div>
         </main>
         
-        <footer>
-            <p>Remember: This tool provides predictive insights only. Results are not guaranteed.</p>
-            <a href="../index.html" class="home-link">← Return to Home</a>
+        <footer class="tool-footer">
+            <p>© IM2015 Premium Prediction Tool | v2.4.1</p>
+            <p class="warning">For predictive purposes only. Not for commercial distribution.</p>
         </footer>
     </div>
     
