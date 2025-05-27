@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Show calculation steps
-        ##stepsText.textContent = calculation.steps;##
+        ##stepsT?ext.textCon?tent = calcu?lation.steps;##
         
         // Show result container
         resultContainer.style.display = 'block';
