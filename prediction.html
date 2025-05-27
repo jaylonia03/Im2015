@@ -3,28 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Prediction Tool | IM2015</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>IM2015 Prediction Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="password-gate">
-        <div class="gate-card">
-            <h2>Prediction Tool Access</h2>
-            <p>Enter the prediction tool password to continue</p>
-            
-            <form id="passwordForm">
-                <div class="input-group">
-                    <input type="password" id="toolPassword" placeholder="Enter password" required>
-                    <button type="submit">UNLOCK TOOL</button>
-                </div>
-            </form>
-            
-            <div class="password-hint">
-                <p>Password is case sensitive. Contact admin if you forgot it.</p>
+    <div class="prediction-container">
+        <div class="password-modal" id="passwordModal">
+            <div class="modal-content">
+                <h2>Prediction Tool Access</h2>
+                <p>Enter the prediction tool password to continue:</p>
+                <input type="password" id="toolPassword" placeholder="Enter password">
+                <button id="submitPassword">Submit</button>
+                <p id="passwordError" class="error-message"></p>
             </div>
         </div>
+        
+        <header class="prediction-header">
+            <h1>IM2015 <span>Prediction</span> Engine</h1>
+            <div class="tech-border"></div>
+        </header>
+        
+        <main class="prediction-main">
+            <div class="input-section">
+                <label for="currentNumber">Current Number</label>
+                <input type="number" id="currentNumber" placeholder="Enter current number">
+                <button id="calculateBtn" class="neon-button">CALCULATE</button>
+            </div>
+            
+            <div class="result-section">
+                <div class="result-display">
+                    <h3>Prediction Result</h3>
+                    <div class="result-value" id="resultValue">--</div>
+                    <div class="result-type" id="resultType">Awaiting calculation...</div>
+                </div>
+                
+                <div class="history-section">
+                    <h3>Recent Calculations</h3>
+                    <ul id="historyList"></ul>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <div class="info-box">
+                    <h4>Prediction Analysis</h4>
+                    <p>This advanced algorithm processes numerical patterns to generate predictive outcomes.</p>
+                    <p>Remember: All calculations are approximations with a 50% accuracy threshold.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="prediction-footer">
+            <p>© 2023 IM2015 Predictive Systems | <span id="currentYear"></span></p>
+        </footer>
     </div>
     
-    <script src="js/prediction.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
