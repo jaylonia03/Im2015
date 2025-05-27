@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | IM2015 Premium</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="login-panel" id="loginPanel">
+            <div class="login-box">
+                <h1><i class="fas fa-lock"></i> Admin Login</h1>
+                <div class="input-group">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" placeholder="Enter admin username">
+                </div>
+                <div class="input-group">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter password">
+                </div>
+                <button id="adminLoginBtn">Login</button>
+                <p class="error-message" id="adminLoginError"></p>
+                <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+            </div>
+        </div>
+
+        <div class="admin-content" id="adminContent" style="display: none;">
+            <header>
+                <h1><a href="index.html">IM2015 <span>Admin Panel</span></a></h1>
+                <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </header>
+
+            <div class="admin-tools">
+                <div class="tool-card">
+                    <h2><i class="fas fa-key"></i> Prediction Tool Password</h2>
+                    <div class="tool-content">
+                        <p>Current password: <span id="currentToolPassword"></span></p>
+                        <div class="input-group">
+                            <label for="newToolPassword">New Password</label>
+                            <input type="password" id="newToolPassword" placeholder="Enter new password">
+                        </div>
+                        <div class="input-group">
+                            <label for="confirmToolPassword">Confirm Password</label>
+                            <input type="password" id="confirmToolPassword" placeholder="Confirm new password">
+                        </div>
+                        <button id="updatePasswordBtn">Update Password</button>
+                        <p class="success-message" id="passwordUpdateSuccess"></p>
+                        <p class="error-message" id="passwordUpdateError"></p>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h2><i class="fas fa-chart-bar"></i> Usage Statistics</h2>
+                    <div class="tool-content">
+                        <div class="stat-item">
+                            <i class="fas fa-calculator"></i>
+                            <div>
+                                <h3>Total Calculations</h3>
+                                <p id="totalCalculations">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-history"></i>
+                            <div>
+                                <h3>Last Calculation</h3>
+                                <p id="lastCalculation">Never</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h2><i class="fas fa-cog"></i> System Settings</h2>
+                    <div class="tool-content">
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" id="maintenanceMode">
+                                <span class="slider round"></span>
+                            </label>
+                            <span>Maintenance Mode</span>
+                        </div>
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" id="darkModeToggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <span>Dark Mode</span>
+                        </div>
+                        <button id="saveSettingsBtn">Save Settings</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>© 2023 IM2015 Premium Prediction Tool. Admin Panel v1.0</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/admin.js"></script>
+</body>
+</html>
